@@ -59,13 +59,13 @@ def desktop_switch() -> None:
 def minimize_window() -> None:
     current_window = pygetwindow.getActiveWindow()
 
-    if current_window.isMaximized:
-        current_window.minimize()
+    if current_window.isMinimized:
+        current_window.restore()
         sleep(DataContainer.TIME_VALUE)
     else:
-        current_window.maximize()
+        current_window.minimize()
         sleep(DataContainer.TIME_VALUE)
-
+        
 
 def run():
     keyboard.add_hotkey(DataContainer.ACTIVATION_HOTKEY_1, desktop_switch)
