@@ -1,9 +1,10 @@
 import os
 from time import sleep
 
-os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
+os.environ["PYGAME_HIDE_SUPPORT_PROMPT"] = "hide"
 
 import keyboard
+import pygetwindow
 from pygame import mixer
 from pyvda import AppView as view
 from pyvda import VirtualDesktop as desktop
@@ -19,6 +20,7 @@ class DataContainer:
     SWITCH_DESKTOP_SOUND: str = "./static/bubble.mp3"
     ACTIVATION_HOTKEY_1: str = "ctrl+alt"
     ACTIVATION_HOTKEY_2: str = "ctrl+win+alt"
+    ACTIVATION_HOTKEY_3: str = "shift+alt"
     TIME_VALUE: float = 0.7
     VOLUME_LEVEL: float = 0.1
 
@@ -54,9 +56,21 @@ def desktop_switch() -> None:
         playsound(DataContainer.SWITCH_DESKTOP_SOUND)
 
 
+def minimize_window() -> None:
+    current_window = pygetwindow.getActiveWindow()
+
+    if current_window.isMaximized:
+        current_window.minimize()
+        sleep(DataContainer.TIME_VALUE)
+    else:
+        current_window.maximize()
+        sleep(DataContainer.TIME_VALUE)
+
+
 def run():
     keyboard.add_hotkey(DataContainer.ACTIVATION_HOTKEY_1, desktop_switch)
     keyboard.add_hotkey(DataContainer.ACTIVATION_HOTKEY_2, move_window)
+    keyboard.add_hotkey(DataContainer.ACTIVATION_HOTKEY_3, minimize_window)
     keyboard.wait()
 
 

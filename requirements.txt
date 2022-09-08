@@ -1,5 +1,7 @@
 comtypes==1.1.14
 keyboard==0.13.5
 pygame==2.1.2
+PyGetWindow==0.0.9
+PyRect==0.2.0
 pyvda==0.2.7
 pywin32==304
