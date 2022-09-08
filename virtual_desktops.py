@@ -20,10 +20,10 @@ class DataContainer:
     ACTIVATION_HOTKEY_1: str = "ctrl+alt"
     ACTIVATION_HOTKEY_2: str = "ctrl+win+alt"
     TIME_VALUE: float = 0.7
-    VOLUME_LEVEL: float = 0.7
+    VOLUME_LEVEL: float = 0.1
 
 
-def playsound(file):
+def playsound(file: str) -> None:
     mixer.music.load(file)
     mixer.music.play()
     mixer.music.set_volume(DataContainer.VOLUME_LEVEL)
