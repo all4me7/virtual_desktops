@@ -10,6 +10,14 @@ from pyvda import AppView as view
 from pyvda import VirtualDesktop as desktop
 from pyvda import get_virtual_desktops
 
+DESCRIPTION: str = f"""
+VIRTUAL-DESKTOPS
+----------------
+CTRL + ALT: Switch beetwen 2 desktops
+CTRL + WIN + ALT: Move active window to next desktop
+SHIFT + ALT: Minimize/Maximize active window
+"""
+
 mixer.init()
 desktop.create() if len(get_virtual_desktops()) == 1 else ...
 
@@ -65,9 +73,11 @@ def minimize_window() -> None:
     else:
         current_window.minimize()
         sleep(DataContainer.TIME_VALUE)
-        
+
 
 def run():
+    os.system("cls")
+    print(DESCRIPTION.strip())
     keyboard.add_hotkey(DataContainer.ACTIVATION_HOTKEY_1, desktop_switch)
     keyboard.add_hotkey(DataContainer.ACTIVATION_HOTKEY_2, move_window)
     keyboard.add_hotkey(DataContainer.ACTIVATION_HOTKEY_3, minimize_window)
