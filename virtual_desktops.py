@@ -25,7 +25,8 @@ desktop.create() if len(get_virtual_desktops()) == 1 else ...
 class DataContainer:
     FIRST_DESKTOP: int = 1
     SECOND_DESKTOP: int = 2
-    SWITCH_DESKTOP_SOUND: str = "./static/bubble.mp3"
+    SWITCH_DESKTOP_SOUND: str = "./static/output.mp3"
+    REVERSED_SWITCH_DESKTOP_SOUND: str = "./static/reversed_output.mp3"
     ACTIVATION_HOTKEY_1: str = "ctrl+alt"
     ACTIVATION_HOTKEY_2: str = "ctrl+win+alt"
     ACTIVATION_HOTKEY_3: str = "shift+alt"
@@ -61,7 +62,7 @@ def desktop_switch() -> None:
         playsound(DataContainer.SWITCH_DESKTOP_SOUND)
     else:
         desktop(DataContainer.FIRST_DESKTOP).go()
-        playsound(DataContainer.SWITCH_DESKTOP_SOUND)
+        playsound(DataContainer.REVERSED_SWITCH_DESKTOP_SOUND)
 
 
 def minimize_window() -> None:
