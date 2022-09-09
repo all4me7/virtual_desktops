@@ -10,12 +10,13 @@ from pyvda import AppView as view
 from pyvda import VirtualDesktop as desktop
 from pyvda import get_virtual_desktops
 
-DESCRIPTION: str = f"""
+DESCRIPTION: str = """
 VIRTUAL-DESKTOPS
 ----------------
 CTRL + ALT: Switch beetwen 2 desktops
 CTRL + WIN + ALT: Move active window to next desktop
 SHIFT + ALT: Minimize/Maximize active window
+SHIFT + WIN + DEL: Quit app
 """
 
 mixer.init()
@@ -29,6 +30,7 @@ class DataContainer:
     ACTIVATION_HOTKEY_1: str = "ctrl+alt"
     ACTIVATION_HOTKEY_2: str = "ctrl+win+alt"
     ACTIVATION_HOTKEY_3: str = "shift+alt"
+    QUIT_HOTKEY: str = "shift + win + del"
     TIME_VALUE: float = 0.7
     VOLUME_LEVEL: float = 0.1
 
@@ -81,7 +83,7 @@ def run():
     keyboard.add_hotkey(DataContainer.ACTIVATION_HOTKEY_1, desktop_switch)
     keyboard.add_hotkey(DataContainer.ACTIVATION_HOTKEY_2, move_window)
     keyboard.add_hotkey(DataContainer.ACTIVATION_HOTKEY_3, minimize_window)
-    keyboard.wait()
+    keyboard.wait(DataContainer.QUIT_HOTKEY)
 
 
 if __name__ == "__main__":
