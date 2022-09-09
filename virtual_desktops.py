@@ -13,10 +13,11 @@ from pyvda import get_virtual_desktops
 DESCRIPTION: str = """
 VIRTUAL-DESKTOPS
 ----------------
-CTRL + ALT: Switch beetwen 2 desktops
-CTRL + WIN + ALT: Move active window to next desktop
-SHIFT + ALT: Minimize/Maximize active window
-SHIFT + WIN + DEL: Quit app
+HOTKEYS:
+> CTRL + ALT: Switch beetwen 2 desktops
+> CTRL + WIN + ALT: Move active window to next desktop
+> SHIFT + ALT: Minimize/Maximize active window
+> SHIFT + WIN + DEL: Quit app
 """
 
 mixer.init()
