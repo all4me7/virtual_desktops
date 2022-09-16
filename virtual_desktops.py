@@ -21,7 +21,13 @@ HOTKEYS:
 """
 
 mixer.init()
-desktop.create() if len(get_virtual_desktops()) == 1 else ...
+
+counter = len(get_virtual_desktops())
+numbers = [x for x in range(2, counter + 1)]
+for desktop_number in sorted(numbers, reverse=True):
+    desktop(desktop_number).remove()
+
+desktop.create()
 
 
 class DataContainer:
